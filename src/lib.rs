@@ -1,6 +1,7 @@
+use std::collections::HashMap;
 use std::env;
 use std::error::Error;
-// use std::fs;
+use std::fs;
 
 #[derive(Debug)]
 pub struct Config {
@@ -29,5 +30,39 @@ impl Config {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     println!("Rust Brainfuck Compiler");
     println!("{:?}", config);
+
+    let contents = fs::read_to_string(config.filename)?;
+    transpile_to_c(&contents);
     Ok(())
+}
+
+fn transpile_to_c(contents: &str) -> String {
+    let transpilation_table: HashMap<char, &str> = [
+        ('>', "++ptr;"),
+        ('<', "--ptr;"),
+        ('+', "++*ptr;"),
+        ('-', "--*ptr;"),
+        ('.', "putchar(*ptr);"),
+        (',', "*ptr = getchar();"),
+        ('[', "while (*ptr) {"),
+        (']', "}"),
+    ]
+    .iter()
+    .cloned()
+    .collect();
+
+    let mut c_code = String::new();
+
+    for c in contents.chars() {
+        if let Some(c_snippet) = transpilation_table.get(&c) {
+            c_code.push_str(c_snippet);
+            c_code.push('\n');
+        }
+    }
+
+    insert_in_c_template(c_code)
+}
+
+fn insert_in_c_template(c_code: String) -> String {
+    c_code
 }
