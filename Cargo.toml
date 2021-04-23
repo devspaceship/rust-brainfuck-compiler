@@ -1,5 +1,5 @@
 [package]
-name = "rust-brainfuck-compiler"
+name = "rbfc"
 version = "0.1.0"
 authors = ["Thomas Saint-Gérand <devspaceship@gmail.com>"]
 edition = "2018"
