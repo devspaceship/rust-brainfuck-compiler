@@ -14,3 +14,11 @@ The language's name is a reference to the slang term brainfuck, which refers to 
 
 We can make a compiler by converting the brainfuck code into assembly and then assembling it.
 However, it is simpler to transpile the brainfuck into C code and to then compile this C source file with an already existing C compiler, this project is using this method instead.
+
+## Usage
+
+```bash
+cargo run samples/hello_world.bf [-r/--run]
+```
+
+The `-r` or `--run` flag is optional and indicates that you want to run the binary after the compilation is completed.
