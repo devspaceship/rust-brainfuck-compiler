@@ -22,13 +22,3 @@ cargo run samples/hello_world.bf [-r/--run]
 ```
 
 The `-r` or `--run` flag is optional and indicates that you want to run the binary after the compilation is completed.
-
-## Status
-
-- [x] Scaffolding
-- [x] Transpile to C code string
-- [ ] Wrap in template
-- [ ] Write to file
-- [ ] Compile with gcc
-- [ ] Delete file
-- [ ] Optionally run the resulting binary
