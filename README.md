@@ -30,4 +30,4 @@ The `-r` or `--run` flag is optional and indicates that you want to run the bina
 - [ ] Assembly method
 - [ ] Change CLI to clap
 - [ ] Add options
-
+- [ ] Optimizations
